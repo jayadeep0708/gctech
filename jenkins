@@ -1,0 +1,18 @@
+agent any
+stages {
+    stage ('scm') {
+        steps {
+         https://github.com/jayadeep0708/gctech.git   
+        }
+    }
+}
+stage ('build') {
+    steps {
+        sh 'mvn clean package '
+    }
+}
+stages ('deploy') {
+steps {
+    deploy contextPath: 'jayadeep', war: '**/*.war'
+}
+}
